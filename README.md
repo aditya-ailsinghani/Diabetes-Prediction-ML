@@ -3,17 +3,94 @@ A classification model to predict diabetes based on patient medical attributes u
 🚀 Best Model: Logistic Regression (AUC = 0.82)
 📊 Tech Stack: Python, Scikit-Learn, Pandas, NumPy, Matplotlib, Seaborn
 
-## 📌 Features:
-✅ **Data Preprocessing** (Handling missing values, outliers, and feature scaling)  
-✅ **Feature Selection** using Recursive Feature Elimination (RFE)  
-✅ **SMOTE for Class Balancing** to handle imbalanced datasets  
-✅ **Trained Multiple Models:** Logistic Regression, Decision Tree, Random Forest, SVM  
-✅ **Evaluated Model Performance** using Confusion Matrix, Precision-Recall, and ROC-AUC curves 
+---
 
-Diabetes-Prediction-ML/
-│── data/                # Raw & processed datasets
-│── notebooks/           # Jupyter Notebooks for analysis
-│── models/              # Saved trained models
-│── images/              # Visualizations (Confusion Matrix, PR Curve, ROC Curve)
-│── requirements.txt     # Python dependencies
-│── README.md            # Project Overview
+## 📌 Features:
+✅ [**Data Preprocessing**]  
+✅ [**Feature Selection using Recursive Feature Elimination (RFE)**] 
+✅ [**SMOTE for Class Balancing**]  
+✅ [**Trained Multiple Models**]  
+✅ [**Model Performance Evaluation**]
+
+---
+
+## 📊 Dataset:
+📌 **Pima Indians Diabetes Database**  
+📂 **Source:** [Kaggle Dataset](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database)  
+- **Contains:** 768 patient records with 8 medical attributes  
+- **Target Variable:** `Outcome` (1 = Diabetic, 0 = Non-Diabetic)
+
+---
+
+## **🛠 Data Preprocessing**
+🔹 Handled **missing values** using **median imputation**.  
+🔹 Removed **outliers in Insulin** using the **IQR method**.  
+🔹 **Standardized features** using **MinMax Scaling**.
+
+---
+
+## **📊 Exploratory Data Analysis (EDA)**  
+🔹 **Heatmap of feature correlations** to check feature importance.
+![image](https://github.com/user-attachments/assets/3ad994c0-892b-4a3d-8131-f8e56b712e19)
+🔹 **Plotted distributions and boxplots** to identify skewness and outliers.
+![image](https://github.com/user-attachments/assets/d9492f7b-f56c-4260-8fc4-5af3e88fd3eb)
+![image](https://github.com/user-attachments/assets/fd60b605-02e1-4e4e-b935-2534a8656ba7)
+![image](https://github.com/user-attachments/assets/8cd23bb7-3a3d-4220-bfb0-48d2292bab5a)
+
+---
+
+## **🔍 Feature Selection using RFE**
+✅ **What is RFE?**  
+- Recursive Feature Elimination (RFE) **removes less important features** iteratively.
+- Improves **model performance** by reducing noise.
+
+---
+
+✅ **Why RFE?**  
+- Selecting **top 5 features** helps in generalization.
+- Avoids overfitting.
+  
+---
+
+## **🧠 Model Training & Parameter Tuning**
+🔹 **Trained multiple models:**  
+- Logistic Regression  
+- Decision Tree  
+- Random Forest  
+- SVM
+  
+---
+
+🔹 **Hyperparameter tuning using GridSearchCV**  
+- **Logistic Regression:** Tuned `C`, `max_iter`.  
+- **Decision Tree & Random Forest:** Tuned `max_depth`, `min_samples_split`.
+
+---
+![image](https://github.com/user-attachments/assets/053c6545-7f55-4081-8ddd-6ba8b2252a81)
+
+---
+## **📊 Results & Performance Metrics**
+🔹 **Confusion Matrix** to analyze True Positives & False Negatives.  
+🔹 **Precision-Recall & ROC-AUC curves** for model evaluation.  
+![image](https://github.com/user-attachments/assets/37ab7aaf-315d-41e7-9235-4bc566c4a342)
+![image](https://github.com/user-attachments/assets/89773599-b7fa-4fcd-a4f8-8121e18fc624)
+
+📌 **Best Model:** **Logistic Regression (AUC = 0.82), Random Forest (AUC = 0.80)** 
+
+
+---
+
+## **📌 Conclusion**
+✅ **Best Model:** Logistic Regression (AUC = 0.82).  
+✅ **Feature selection (RFE) improved accuracy**.  
+✅ **Using SMOTE helped in balancing dataset**.  
+
+📌 **Future Work:**  
+- Experiment with **XGBoost, Deep Learning** to improve model accuracy
+
+---
+
+## 📜 License
+This project is **open-source** under the **MIT License**.
+
+---
