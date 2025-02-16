@@ -31,11 +31,13 @@ A classification model to predict diabetes based on patient medical attributes u
 
 ## **📊 Exploratory Data Analysis (EDA)**  
 🔹 **Heatmap of feature correlations** to check feature importance.
-![image](https://github.com/user-attachments/assets/3ad994c0-892b-4a3d-8131-f8e56b712e19)
+![Heatplot](images/Heatplot.png)
+
 🔹 **Plotted distributions and boxplots** to identify skewness and outliers.
-![image](https://github.com/user-attachments/assets/d9492f7b-f56c-4260-8fc4-5af3e88fd3eb)
-![image](https://github.com/user-attachments/assets/fd60b605-02e1-4e4e-b935-2534a8656ba7)
-![image](https://github.com/user-attachments/assets/8cd23bb7-3a3d-4220-bfb0-48d2292bab5a)
+![OutcomeVariable](images/OutcomeVariable.png)
+![Pairplot](images/Pairplot.png)
+![BoxPlot](images/BoxPlot.png)
+
 
 ---
 
