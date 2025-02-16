@@ -25,6 +25,7 @@ A classification model to predict diabetes based on patient medical attributes u
 ## **🛠 Data Preprocessing**
 🔹 Handled **missing values** using **median imputation**.  
 🔹 Removed **outliers in Insulin** using the **IQR method**.  
+![BoxPlot](images/BoxPlot.png)
 🔹 **Standardized features** using **MinMax Scaling**.
 
 ---
@@ -36,7 +37,7 @@ A classification model to predict diabetes based on patient medical attributes u
 🔹 **Plotted distributions and boxplots** to identify skewness and outliers.
 ![OutcomeVariable](images/OutcomeVariable.png)
 ![Pairplot](images/Pairplot.png)
-![BoxPlot](images/BoxPlot.png)
+
 
 
 ---
@@ -66,16 +67,18 @@ A classification model to predict diabetes based on patient medical attributes u
 🔹 **Hyperparameter tuning using GridSearchCV**  
 - **Logistic Regression:** Tuned `C`, `max_iter`.  
 - **Decision Tree & Random Forest:** Tuned `max_depth`, `min_samples_split`.
+- **Support Vector Machine (SVM):** Tuned `C`, `kernel`, `gamma`.
 
 ---
-![image](https://github.com/user-attachments/assets/053c6545-7f55-4081-8ddd-6ba8b2252a81)
+![Result](images/Result.png)
 
 ---
 ## **📊 Results & Performance Metrics**
-🔹 **Confusion Matrix** to analyze True Positives & False Negatives.  
+🔹 **Confusion Matrix** to analyze True Positives & False Negatives.
+![ConfusionMatrices](images/ConfusionMatrices.png)
 🔹 **Precision-Recall & ROC-AUC curves** for model evaluation.  
-![image](https://github.com/user-attachments/assets/37ab7aaf-315d-41e7-9235-4bc566c4a342)
-![image](https://github.com/user-attachments/assets/89773599-b7fa-4fcd-a4f8-8121e18fc624)
+![PrecisionRecall](images/Precision-Recall.png)
+![ROC-AUC](images/ROC-AUC.png)
 
 📌 **Best Model:** **Logistic Regression (AUC = 0.82), Random Forest (AUC = 0.80)** 
 
