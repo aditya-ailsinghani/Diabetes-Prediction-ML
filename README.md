@@ -1,16 +1,19 @@
-# Diabetes-Prediction-ML
-A classification model to predict diabetes based on patient medical attributes using Logistic Regression, Random Forest, Decision Trees, and SVM. Includes data preprocessing, feature selection (RFE), class balancing (SMOTE), and model evaluation (Precision-Recall, ROC-AUC curves, Confusion Matrices).
-🚀 Best Model: Decision Trees
-📊 Tech Stack: Python, Scikit-Learn, Pandas, NumPy, Matplotlib, Seaborn
+# 🩺 Diabetes Prediction using Machine Learning
+A **classification model** to predict diabetes based on patient medical attributes using **Logistic Regression, Random Forest, Decision Trees, and Support Vector Machine **.  
+The project includes **data preprocessing, feature selection (RFE), class balancing (SMOTE), and model evaluation** using Precision-Recall, ROC-AUC curves, and Confusion Matrices.
+
+🚀 **Best Model:** Decision Tree (Highest Accuracy & Recall)  
+📊 **Tech Stack:** Python, Scikit-Learn, Pandas, NumPy, Matplotlib, Seaborn
 
 ---
 
 ## 📌 Features:
-✅ [**Data Preprocessing**]  
-✅ [**Feature Selection using Recursive Feature Elimination (RFE)**] 
-✅ [**SMOTE for Class Balancing**]  
-✅ [**Trained Multiple Models**]  
-✅ [**Model Performance Evaluation**]
+✅ **Data Preprocessing** (Handling missing values, outliers, and scaling)  
+✅ **Feature Selection** using Recursive Feature Elimination (RFE)  
+✅ **Class Balancing** with SMOTE  
+✅ **Multiple Model Training & Evaluation**  
+✅ **Model Performance Analysis** (Confusion Matrix, Precision-Recall, ROC-AUC)  
+✅ **Interactive Streamlit App for Predictions**  
 
 ---
 
@@ -20,47 +23,69 @@ A classification model to predict diabetes based on patient medical attributes u
 - **Contains:** 768 patient records with 8 medical attributes  
 - **Target Variable:** `Outcome` (1 = Diabetic, 0 = Non-Diabetic)
 
+| Feature               | Description |
+|-----------------------|-------------|
+| Pregnancies          | Number of times pregnant |
+| Glucose              | Plasma glucose concentration |
+| BloodPressure        | Diastolic blood pressure (mm Hg) |
+| SkinThickness        | Triceps skin fold thickness (mm) |
+| Insulin              | 2-Hour serum insulin (mu U/ml) |
+| BMI                  | Body mass index (weight/height²) |
+| DiabetesPedigreeFunction | Diabetes hereditary score |
+| Age                  | Age in years |
+| Outcome (Target)     | 1 = Diabetes, 0 = No Diabetes |
+
 ---
 
-## **🛠 Data Preprocessing**
-🔹 Handled **missing values** using **median imputation**.  
+## **1️⃣ Data Preprocessing**
+🔹 Checking for missing values.  
 🔹 Removed **outliers in Insulin** using the **IQR method**.  
 ![BoxPlot](images/BoxPlot.png)
-🔹 **Standardized features** using **MinMax Scaling**.
+🔹 **Standardized features** using **Z-score Normalization (StandardScaler)**.
 
 ---
 
-## **📊 Exploratory Data Analysis (EDA)**  
+## **2️⃣ Exploratory Data Analysis (EDA)**  
 🔹 **Heatmap of feature correlations** to check feature importance.
 ![Heatplot](images/Heatplot.png)
 
-🔹 **Plotted distributions and boxplots** to identify skewness and outliers.
+🔹 **Pairplot Analysis** to understand Feature Relationships
 ![OutcomeVariable](images/OutcomeVariable.png)
+
+🔹 **Class Distribution** to to identify data imbalance
 ![Pairplot](images/Pairplot.png)
 
-
+---
+1️⃣ 2️⃣ 3️⃣ 4️⃣ 5️⃣ 6️⃣ 7️⃣ 8️⃣
+## **3️⃣ Feature Selection using RFE**
+### ✅ What is RFE?  
+- **Recursive Feature Elimination (RFE)** is a feature selection technique that **iteratively removes less important features** to improve model performance.
+- It helps in **identifying the most relevant features** while reducing dimensionality and noise.
 
 ---
 
-## **🔍 Feature Selection using RFE**
-✅ **What is RFE?**  
-- Recursive Feature Elimination (RFE) **removes less important features** iteratively.
-- Improves **model performance** by reducing noise.
+### ✅ Why Use RFE?  
+✔ **Improves Model Generalization** – Reduces overfitting by selecting only the most important features.  
+✔ **Enhances Model Efficiency** – Reducing features improves training speed and simplifies the model.  
+✔ **Boosts Interpretability** – Helps understand which features contribute most to predictions.  
 
 ---
 
-✅ **Why RFE?**  
-- Selecting **top 5 features** helps in generalization.
-- Avoids overfitting.
+### ✅ Features Selected by RFE:
+- **Pregnancies**
+- **Glucose**
+- **BloodPressure**
+- **BMI**
+- **DiabetesPedigreeFunction**
   
 ---
 
-## **🧠 Model Training & Parameter Tuning**
+## **4️⃣ Model Training & Parameter Tuning**
 🔹 **Trained multiple models:**  
 - Logistic Regression  
 - Decision Tree  
 - Random Forest  
-- SVM
+- Support Vector Machine
   
 ---
 
@@ -70,7 +95,7 @@ A classification model to predict diabetes based on patient medical attributes u
 - **Support Vector Machine (SVM):** Tuned `C`, `kernel`, `gamma`.
 
 ---
-![Result](images/Result.png)
+
 
 ---
 ## **📊 Results & Performance Metrics**
