@@ -152,9 +152,6 @@ Shows model's ability to distinguish between diabetic and non-diabetic.
 
 A lightweight Streamlit app was built to make predictions on new patient data using the trained model.
 
-### ▶️ Run Locally:
-```bash
-streamlit run app.py
 ---
 
 ## 📝 License
