@@ -156,4 +156,4 @@ A lightweight Streamlit app was built to make predictions on new patient data us
 
 ## 📝 License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](License).
