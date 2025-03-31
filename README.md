@@ -155,3 +155,8 @@ A lightweight Streamlit app was built to make predictions on new patient data us
 ### ▶️ Run Locally:
 ```bash
 streamlit run app.py
+---
+
+## 📝 License
+
+This project is licensed under the [MIT License](LICENSE).
