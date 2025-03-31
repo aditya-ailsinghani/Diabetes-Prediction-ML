@@ -1,126 +1,157 @@
-# 🩺 Diabetes Prediction using Machine Learning
-A **classification model** to predict diabetes based on patient medical attributes using **Logistic Regression, Random Forest, Decision Trees, and Support Vector Machine **.  
-The project includes **data preprocessing, feature selection (RFE), class balancing (SMOTE), and model evaluation** using Precision-Recall, ROC-AUC curves, and Confusion Matrices.
+# 🧠 Diabetes Prediction using Machine Learning
 
-🚀 **Best Model:** Decision Tree (Highest Accuracy & Recall)  
-📊 **Tech Stack:** Python, Scikit-Learn, Pandas, NumPy, Matplotlib, Seaborn
+A machine learning classification project that predicts diabetes using medical attributes such as glucose levels, BMI, and more. The pipeline includes data preprocessing, exploratory data analysis (EDA), feature selection with RFE, class balancing with SMOTE, model training & evaluation, and deployment using Streamlit.
 
 ---
 
-## 📌 Features:
-✅ **Data Preprocessing** (Handling missing values, outliers, and scaling)  
-✅ **Feature Selection** using Recursive Feature Elimination (RFE)  
-✅ **Class Balancing** with SMOTE  
-✅ **Multiple Model Training & Evaluation**  
-✅ **Model Performance Analysis** (Confusion Matrix, Precision-Recall, ROC-AUC)  
-✅ **Interactive Streamlit App for Predictions**  
+## 📁 Dataset
+
+- **Source**: [PIMA Indian Diabetes Dataset (Kaggle)](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database)
+- **Target Variable**: `Outcome` (0 = No Diabetes, 1 = Diabetes)
+- **Features**:  
+  `Pregnancies`, `Glucose`, `BloodPressure`, `SkinThickness`, `Insulin`, `BMI`, `DiabetesPedigreeFunction`, `Age`
 
 ---
 
-## 📊 Dataset:
-📌 **Pima Indians Diabetes Database**  
-📂 **Source:** [Kaggle Dataset](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database)  
-- **Contains:** 768 patient records with 8 medical attributes  
-- **Target Variable:** `Outcome` (1 = Diabetic, 0 = Non-Diabetic)
+## 📊 1️⃣ Exploratory Data Analysis (EDA)
 
-| Feature               | Description |
-|-----------------------|-------------|
-| Pregnancies          | Number of times pregnant |
-| Glucose              | Plasma glucose concentration |
-| BloodPressure        | Diastolic blood pressure (mm Hg) |
-| SkinThickness        | Triceps skin fold thickness (mm) |
-| Insulin              | 2-Hour serum insulin (mu U/ml) |
-| BMI                  | Body mass index (weight/height²) |
-| DiabetesPedigreeFunction | Diabetes hereditary score |
-| Age                  | Age in years |
-| Outcome (Target)     | 1 = Diabetes, 0 = No Diabetes |
+### 🔹 Outcome Distribution  
+This shows an imbalanced dataset, with more non-diabetic patients than diabetic ones.
+> ⚠️ Addressed using SMOTE during preprocessing.
+  
+![Outcome Distribution](images/OutcomeDistribution.png)
 
 ---
 
-## **1️⃣ Data Preprocessing**
-🔹 Checking for missing values.  
-🔹 Removed **outliers in Insulin** using the **IQR method**.  
-![BoxPlot](images/BoxPlot.png)
-🔹 **Standardized features** using **Z-score Normalization (StandardScaler)**.
+### 🔹 Correlation Heatmap  
+Highlights relationships between features and the target.  
+- **Glucose** has the highest correlation with diabetes.
+- BMI, Age, Pregnancies are also moderately predictive.
+
+![Correlation Heatmap](images/Heatplot.png)
 
 ---
 
-## **2️⃣ Exploratory Data Analysis (EDA)**  
-🔹 **Heatmap of feature correlations** to check feature importance.
-![Heatplot](images/Heatplot.png)
+### 🔹 Pairplot – Feature Relationships by Class  
+Multivariate scatterplots color-coded by `Outcome`.  
+- Glucose, Age, BMI show good class separation.
+- Helps spot feature effectiveness visually.
 
-🔹 **Pairplot Analysis** to understand Feature Relationships
-![OutcomeVariable](images/OutcomeVariable.png)
-
-🔹 **Class Distribution** to to identify data imbalance
 ![Pairplot](images/Pairplot.png)
 
 ---
-1️⃣ 2️⃣ 3️⃣ 4️⃣ 5️⃣ 6️⃣ 7️⃣ 8️⃣
-## **3️⃣ Feature Selection using RFE**
-### ✅ What is RFE?  
-- **Recursive Feature Elimination (RFE)** is a feature selection technique that **iteratively removes less important features** to improve model performance.
-- It helps in **identifying the most relevant features** while reducing dimensionality and noise.
+
+### 🔹 Outlier Detection – Boxplots
+
+**Before IQR Filtering (Raw Data):**  
+- **Insulin** has extreme outliers (>800), which can distort scaling and model learning.
+
+![Boxplot Before](images/Boxplot1.png)
+
+**After IQR Filtering (Cleaned Data):**  
+- Outliers reduced for Insulin using IQR method.
+- Outlier removal was done **only once** to avoid overfitting or shrinking data unnecessarily.
+
+![Boxplot After](images/Boxplot2.png)
 
 ---
 
-### ✅ Why Use RFE?  
-✔ **Improves Model Generalization** – Reduces overfitting by selecting only the most important features.  
-✔ **Enhances Model Efficiency** – Reducing features improves training speed and simplifies the model.  
-✔ **Boosts Interpretability** – Helps understand which features contribute most to predictions.  
+## 🧪 2️⃣ Feature Selection using RFE
+
+### 🔹 Why RFE?
+- **Recursive Feature Elimination (RFE)** helps remove less useful features by recursively training a base model.
+- Improves generalization and reduces overfitting.
+
+### ✅ Top 5 Features Selected:
+- `Pregnancies`
+- `Glucose`
+- `BloodPressure`
+- `BMI`
+- `DiabetesPedigreeFunction`
 
 ---
 
-### ✅ Features Selected by RFE:
-- **Pregnancies**
-- **Glucose**
-- **BloodPressure**
-- **BMI**
-- **DiabetesPedigreeFunction**
-  
----
+## 🧠 3️⃣ Model Training & Evaluation
 
-## **4️⃣ Model Training & Parameter Tuning**
-🔹 **Trained multiple models:**  
-- Logistic Regression  
-- Decision Tree  
-- Random Forest  
-- Support Vector Machine
-  
----
-
-🔹 **Hyperparameter tuning using GridSearchCV**  
-- **Logistic Regression:** Tuned `C`, `max_iter`.  
-- **Decision Tree & Random Forest:** Tuned `max_depth`, `min_samples_split`.
-- **Support Vector Machine (SVM):** Tuned `C`, `kernel`, `gamma`.
+Trained four models with hyperparameter tuning:
+- Logistic Regression
+- Decision Tree
+- Random Forest
+- Support Vector Machine (SVM)
 
 ---
 
+### 🔹 Confusion Matrices  
+Breakdown of model predictions:
 
----
-## **📊 Results & Performance Metrics**
-🔹 **Confusion Matrix** to analyze True Positives & False Negatives.
-![ConfusionMatrices](images/ConfusionMatrices.png)
-🔹 **Precision-Recall & ROC-AUC curves** for model evaluation.  
-![PrecisionRecall](images/Precision-Recall.png)
-![ROC-AUC](images/ROC-AUC.png)
+| Model | False Negatives (missed diabetics) | False Positives (false alarms) |
+|-------|------------------------------------|--------------------------------|
+| **Decision Tree** ✅ | **12** (Best Recall) | 21 |
+| Random Forest | 17 | 22 |
+| Logistic Regression | 14 | **27** (Most FP) |
+| SVM | 17 | 24 |
 
-📌 **Best Model:** **Logistic Regression (AUC = 0.82), Random Forest (AUC = 0.80)** 
-
-
----
-
-## **📌 Conclusion**
-✅ **Best Model:** Logistic Regression (AUC = 0.82).  
-✅ **Feature selection (RFE) improved accuracy**.  
-✅ **Using SMOTE helped in balancing dataset**.  
-
-📌 **Future Work:**  
-- Experiment with **XGBoost, Deep Learning** to improve model accuracy
+![Confusion Matrix](images/ConfusionMatrix.png)
 
 ---
 
-## 📜 License
-This project is **open-source** under the **MIT License**.
+### 🔹 Precision-Recall Curve  
+Great for imbalanced datasets.
+
+- **Random Forest** maintains high precision across recall.
+- **Decision Tree** fluctuates but reaches high recall.
+- **SVM** is best when minimizing false positives.
+
+![Precision-Recall](images/PRCurve.png)
+
+📌 Use:
+- **DT/RF** for high recall (detect more diabetes).
+- **SVM** for high precision (avoid false alarms).
 
 ---
+
+### 🔹 ROC-AUC Curve  
+Shows model's ability to distinguish between diabetic and non-diabetic.
+
+| Model | AUC Score |
+|-------|-----------|
+| 🥇 Random Forest | **0.82** |
+| Logistic Regression | 0.81 |
+| Decision Tree | 0.80 |
+| SVM | 0.79 |
+
+![ROC-AUC](images/RocAuc.png)
+
+---
+
+### 🔹 Model Metrics Overview
+
+| Model                | Accuracy | Precision | Recall | F1-Score |
+|---------------------|----------|-----------|--------|----------|
+| **Decision Tree** ✅ | **0.7857** | 0.6667    | **0.7778** | **0.7179** |
+| Random Forest        | 0.7468   | 0.6271    | 0.6852 | 0.6549 |
+| Logistic Regression  | 0.7338   | 0.5970    | 0.7407 | 0.6612 |
+| SVM                  | 0.7338   | 0.6066    | 0.6852 | 0.6435 |
+
+
+---
+
+## 🏁 4️⃣ Final Model Verdict
+
+| Goal                                | Best Model           |
+|-------------------------------------|----------------------|
+| Catch all diabetic cases (recall)   | ✅ Decision Tree      |
+| Best discrimination (AUC)           | Random Forest        |
+| Avoid false positives (precision)   | SVM                  |
+
+🎯 **Deployment Choice:** Decision Tree – best balance of recall and performance.
+
+---
+
+## 🧪 5️⃣ Streamlit App
+
+A lightweight Streamlit app was built to make predictions on new patient data using the trained model.
+
+### ▶️ Run Locally:
+```bash
+streamlit run app.py
