@@ -150,7 +150,18 @@ Shows model's ability to distinguish between diabetic and non-diabetic.
 
 ## 🧪 5️⃣ Streamlit App
 
-A lightweight Streamlit app was built to make predictions on new patient data using the trained model.
+A lightweight web app (`app.py`) lets you enter patient data and predict diabetes risk using the trained model.
+
+### ▶️ Run the app
+
+Make sure the following files are in the same folder:
+- `app.py`
+- `diabetes_dt_model.pkl`
+- `scaler.pkl`
+- `selected_features.pkl`
+
+Open the terminal, navigate to the project folder, and run:
+`streamlit run app.py`
 
 ---
 
