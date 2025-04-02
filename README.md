@@ -163,6 +163,8 @@ Make sure the following files are in the same folder:
 Open the terminal, navigate to the project folder, and run:
 `streamlit run app.py`
 
+![App Demo](images/AppDemo.png)
+
 The app will show:
 - Prediction: **High/Low Risk**
 - Confidence score (%)
