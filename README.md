@@ -128,7 +128,7 @@ Shows model's ability to distinguish between diabetic and non-diabetic.
 
 | Model                | Accuracy | Precision | Recall | F1-Score |
 |---------------------|----------|-----------|--------|----------|
-| **Decision Tree** ✅ | **0.7857** | 0.6667    | **0.7778** | **0.7179** |
+| **Decision Tree** ✅ | **0.7857** | **0.6667**    | **0.7778** | **0.7179** |
 | Random Forest        | 0.7468   | 0.6271    | 0.6852 | 0.6549 |
 | Logistic Regression  | 0.7338   | 0.5970    | 0.7407 | 0.6612 |
 | SVM                  | 0.7338   | 0.6066    | 0.6852 | 0.6435 |
